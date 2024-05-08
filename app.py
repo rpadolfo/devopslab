@@ -4,4 +4,4 @@ app = Flask(__name__)
 
 @app.route("/")
 def pagina_inicial():
-    return "Olá! como vai você?"
+    return "<H1>Olá! Como vai você?</H1>"
