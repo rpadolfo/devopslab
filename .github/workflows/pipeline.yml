@@ -85,3 +85,19 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_NOTIFICATIONS_TOKEN }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+  DAST:
+    needs: Build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+
+    steps:
+      - name: Download do Repositório
+        uses: actions/checkout@v4       # https://github.com/actions/checkout
+
+      - name: DAST (ZAP Scan)
+        uses: zaproxy/action-full-scan@v0.10.0
+        with:
+          target: 'https://adolfo-app-nu2ly27wnq-ue.a.run.app/'
