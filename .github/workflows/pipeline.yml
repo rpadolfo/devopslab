@@ -20,7 +20,7 @@ jobs:
           python-version: '3.10'
 
       - name: Install Requirements
-        run:  pip install flask flask-wtf pytest-cov
+        run:  pip install flask flask-wtf pytest coverage
 
       - name: Unit Test
         run: |
@@ -32,7 +32,7 @@ jobs:
         uses: sonarsource/sonarcloud-github-action@master  #https://github.com/marketplace/actions/sonarcloud-scan
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          
+
       - name: Login no Artifact Registry
         uses: docker/login-action@v3      # https://github.com/marketplace/actions/docker-login#google-artifact-registry-gar
         with:
